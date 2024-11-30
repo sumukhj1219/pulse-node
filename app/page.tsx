@@ -43,7 +43,7 @@ const Home = () => {
         disabled={loading}
         className="px-6 py-2 bg-blue-500 hover:bg-blue-600 rounded-md text-white font-medium"
       >
-        {loading ? <Example /> : 'Ping'}
+        {loading ? <Example /> : 'ping'}
       </button>
       {res && <p className="mt-4">{res}</p>}
     </div>
