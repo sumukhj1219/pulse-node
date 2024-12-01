@@ -45,7 +45,7 @@ const Page = () => {
     console.log(values);
     try {
       const response = await axios.post('/api/register', values);
-      if (response.status === 200) {
+      if (response.status < 400) {
         setIsLoading(false);
         form.reset()
       } else {

@@ -25,7 +25,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
 import axios from "axios";
-
+import { signIn } from "next-auth/react"
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
@@ -46,6 +46,7 @@ const Page = () => {
     setIsLoading(true);
     setError(""); 
     try {
+      signIn("credentials", values)
       const response = await axios.post('/api/login', values);
   
       if (response.status === 200) {
@@ -123,6 +124,7 @@ const Page = () => {
                 )}
               </Button>
             </form>
+            <Button className="w-full flex mt-2" onClick={() => signIn()}>Google</Button>
           </Form>
         </CardContent>
         <CardFooter className="flex flex-col items-center justify-center space-y-2">
